@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INPUT ESCONDER</title>
+
+    <style>
+         @keyframes chuva {
+            0% {transform: translateY(1rem)}
+            5% {transform: translateY(1.5rem)}
+            10% {transform: translateY(2em)}
+            15% {transform: translateY(2.5em)}
+            20% {transform: translateY(3rem)}
+            25% {transform: translateY(3.5rem)}
+            30% {transform: translateY(4rem)}   
+            35% {transform: translateY(4.5rem)}
+            40% {transform: translateY(5rem)}
+            45% {transform: translateY(5.5rem)}
+            50% {transform: translateY(6em)}
+            55% {transform: translateY(6.5em)}
+            60% {transform: translateY(7rem)}
+            65% {transform: translateY(7.5rem)}
+            70% {transform: translateY(8rem)}
+            75% {transform: translateY(8.5rem)}
+            80% {transform: translateY(9rem)}
+            85% {transform: translateY(9.5rem)}
+            90% {transform: translateY(10rem)}
+            95% {transform: translateY(10.5rem)}
+            100% {transform: translateY(11rem)}
+            105% {transform: translateY(11.5rem)}
+            110% {transform: translateY(12rem)}
+            115% {transform: translateY(12.5rem)}
+            120% {transform: translateY(13rem)}
+            125% {transform: translateY(13.5rem)}
+            130% {transform: translateY(14rem)}
+        }
+        @keyframes shake-cloud {
+            0% {transform: translateX(-0.1rem)}
+            25% {transform: translateY(0.1rem)}
+            50% {transform: translateX(0.1rem)}
+            100% {transform: translateY(-0.1rem)}  
+        }
+        @keyframes flasher-lightning {
+            to{background-color: rgb(255, 215, 28);}
+            from{background-color: rgb(199, 180, 95);}
+        }
+
+        html,body{
+            height: 90%;
+            background-color: rgb(240, 247, 255);
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .shake-cloud-top{
+            animation-name: shake-cloud; /* Código que específica o keyframe*/
+            animation-duration: 0.4s; /* Duração da animação */
+            animation-delay: 0.1s; /* Delay para a animação (o timer começa a contar assim que a pág abre) */
+            animation-iteration-count: infinite;/* Quantidade de vezes que a animação vai rodar */
+        }
+        .shake-cloud-bottom{
+            animation-name: shake-cloud; /* Código que específica o keyframe*/
+            animation-duration: 0.3s; /* Duração da animação */
+            animation-delay: 0.1s; /* Delay para a animação (o timer começa a contar assim que a pág abre) */
+            animation-iteration-count: infinite;/* Quantidade de vezes que a animação vai rodar */
+        }
+        .chuva-1s{
+            animation: chuva 1.5s 0.3s infinite;
+        }
+        .chuva-2s{
+            animation: chuva 1.5s 0.1s infinite;
+        }
+        #caixa-nuvem{
+            height: 500px;
+            width: 500px;
+            border-radius: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+
+            z-index: 1;
+        }
+        #chuva-fixed{
+            height: 500px;
+            width: 500px;
+            border-radius: 100%;
+            position: fixed;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            z-index: 0;
+            /* transform: rotate(3deg); */
+        }
+        #chuva-fixed span#pingo-chuva{
+            display: inline-flex;
+            height: 50px;
+            width: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            position: relative;
+            top: -20px;
+        }
+        #chuva-fixed span#pingo-chuva span#triangulo{
+            display: inline-block;
+            height: 20px;
+            width: 30px;
+            
+            background-color: blue;
+
+            clip-path: polygon(50% 0%, 23% 100%, 80% 100%);
+            position: relative;
+            bottom: -1px;
+            left: -0.1px;
+        }
+        #chuva-fixed span#pingo-chuva span#bola{
+            display: inline-block;
+            height: 20px;
+            width: 16.5px;
+            background-color: blue;
+
+            clip-path: circle(50.0% at 50% 0);
+        }
+        #cima-nuvem{
+            margin: 10px;
+            height: 125px;
+            width: 150px;
+            background-color: #A1A0A2;
+            clip-path: circle(50% at 50% 100%);
+            
+            position: relative;
+            bottom: -25px;
+
+            cursor: pointer;
+        }
+        #baixo-nuvem{
+            margin: 10px;
+            height: 100px;
+            width: 300px;
+            background-color: #A1A0A2;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        #baixo-nuvem::before{
+           content: '';
+           display: none;
+           margin: 0 auto;
+          
+           height: 150px;
+           width: 170px;
+           background-color: rgb(255, 215, 28);
+           position: relative;
+           bottom: -77.5px;
+
+           animation: flasher-lightning 1.5s 1.5s infinite ;
+          /* 
+            Y
+            |
+            |
+            |
+            |
+            |
+            ------------------- x
+          */
+           clip-path: polygon(70% 15%, 60% 35%, 85% 35%, 60% 100%, 45% 55%, 20% 55%, 30% 15%);/* X e Y */
+        }
+    </style>
+</head>
+<body class="">
+    <div id = 'chuva-fixed'>
+        <!-- Code Gota -->
+        <span id = 'pingo-chuva' class="chuva-1s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+        <span id = 'pingo-chuva' class="chuva-1s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+        <span id = 'pingo-chuva' class="chuva-2s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+        <span id = 'pingo-chuva' class="chuva-1s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+        <span id = 'pingo-chuva' class="chuva-2s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+        <span id = 'pingo-chuva' class="chuva-1s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+        <span id = 'pingo-chuva' class="chuva-2s"><span id = 'triangulo'></span><span id = 'bola'></span></span>
+    </div>
+
+    <div id = 'caixa-nuvem'>
+        <div id='cima-nuvem' class=""></div>
+        <div id='baixo-nuvem' class=""></div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    // Before Bottom-Cloud
+    const lightning = document.styleSheets[0].cssRules[16];
+
+    const cima_nuvem = document.getElementById('cima-nuvem');
+    const baixo_nuvem = document.getElementById('baixo-nuvem');
+    const chuva = document.getElementById('chuva-fixed');
+
+    cima_nuvem.addEventListener('click', () => {
+        if(cima_nuvem.classList.contains("shake-cloud-top") || baixo_nuvem.classList.contains("shake-cloud-bottom")){
+            baixo_nuvem.classList.remove('shake-cloud-bottom');
+            cima_nuvem.classList.remove('shake-cloud-top');
+            lightning.style.display='none';
+            chuva.style.display='none'
+        }else{
+            baixo_nuvem.classList.add('shake-cloud-bottom');
+            cima_nuvem.classList.add('shake-cloud-top');
+            lightning.style.display='block';
+            chuva.style.display='flex'
+        }
+    });
+
+    baixo_nuvem.addEventListener('click', () => {
+        if(baixo_nuvem.classList.contains("shake-cloud-bottom") || cima_nuvem.classList.contains("shake-cloud-top") ){
+            baixo_nuvem.classList.remove('shake-cloud-bottom');
+            cima_nuvem.classList.remove('shake-cloud-top');
+            lightning.style.display='none';
+            chuva.style.display='none'
+        }else{
+            baixo_nuvem.classList.add('shake-cloud-bottom');
+            cima_nuvem.classList.add('shake-cloud-top');
+            lightning.style.display='block';
+            chuva.style.display='flex'
+        }
+    });
+
+</script>
