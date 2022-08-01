@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id = 'jogo-velha'>
+            <!-- C = COLUWN  R = ROW -->
+            <div id="barra-vertical-1"></div>
+
+            <span id = "r1c1" class = "button" onclick="set_jogadaUser('0')"></span>
+            <span id = "r1c2" class = "button" onclick="set_jogadaUser('1')"></span>
+            <span id = "r1c3" class = "button" onclick="set_jogadaUser('2')"></span>
+
+            <div class="barra-horizontal"></div>
+
+            <span id = "r2c1" class = "button" onclick="set_jogadaUser('3')"></span>
+            <span id = "r2c2" class = "button" onclick="set_jogadaUser('4')"></span>
+            <span id = "r2c3" class = "button" onclick="set_jogadaUser('5')"></span>
+
+            <div class="barra-horizontal"></div>
+
+            <span id = "r3c1" class = "button" onclick="set_jogadaUser('6')"></span>
+            <span id = "r3c2" class = "button" onclick="set_jogadaUser('7')"></span>
+            <span id = "r3c3" class = "button" onclick="set_jogadaUser('8')"></span>
+
+            <div id="barra-vertical-2"></div>
+
+            <div id = 'jogo-velha-fixed'>
+                <button onclick="location.reload();"> Reiniciar </button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js.js"></script>
+</html>
