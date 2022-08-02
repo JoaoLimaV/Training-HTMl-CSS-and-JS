@@ -1,15 +1,3 @@
-function array(array){
-    for(var x = 0; x < array.length; x++){
-        var cont;
-        if(array[x] == 0){
-            cont++;
-        }
-
-        if(x == 8){
-            return cont; 
-        }
-    }
-}
 
 const winningCombinations = [
     [0, 1, 2],
@@ -22,18 +10,23 @@ const winningCombinations = [
     [2, 4, 6],
 ];
 
-var positionsGame = [
+const positionsGame = [
     0, 0, 0,
     0, 0, 0,
-    0, 0, 0,
+    0, 0, 0
 ];
 
 const songEffectWin = new Audio('song/song-winner.mp3');
 const songEffectLose = new Audio('song/song-loser.mp3');
 const songEffectPress = new Audio('song/song-press.mp3');
+const songEffectAcessDenied = new Audio('song/song-acessDenied.mp3');
 
-// disableButton.style.display=none;
+
+const activeDivWin = document.getElementById('jogo-velha-win'); 
 const disableButton = document.getElementById('jogo-velha-fixed'); 
+
+const bgPlayerHuman = document.getElementById('human'); 
+const bgPlayerIA = document.getElementById('ia'); 
 
 // Btn
 const r1c1 = document.getElementById('r1c1');
@@ -49,13 +42,15 @@ const r3c2 = document.getElementById('r3c2');
 const r3c3 = document.getElementById('r3c3');
 
 function set_jogadaUser(posiJogada){
-    if(getBTN_disponivel(posiJogada) == true){
-        // Parametro 1 = name button | Parametro 2 = X(0) or O(1)
-        setCampo_Jogado(posiJogada, 0); 
-        songEffectPress.play();
-
-       /*  jogadaIA(); */
-        verifyWinner('x')
+    if(getBTN_disponivel(posiJogada) != true){
+        songEffectAcessDenied.play();
+    }else{
+         disableButtons(true);
+         // Parametro 1 = name button | Parametro 2 = which
+         setCampo_Jogado(posiJogada, 'x'); 
+         songEffectPress.play();
+         verifyWinner('x');
+         jogadaIA();
     }
 }
 
@@ -74,43 +69,43 @@ function getBTN_disponivel(name_btn){
 }
 
 function setCampo_Jogado(name_btn, which){
-    var textX = document.createTextNode('x');
-    var textO = document.createTextNode('o');
-
-    if(which == 0){
-        switch(name_btn){
-            case '0': positionsGame[0] = 'x'; r1c1.appendChild(textX); break;
-            case '1': positionsGame[1] = 'x'; r1c2.appendChild(textX); break;
-            case '2': positionsGame[2] = 'x'; r1c3.appendChild(textX); break;
-            case '3': positionsGame[3] = 'x'; r2c1.appendChild(textX); break;
-            case '4': positionsGame[4] = 'x'; r2c2.appendChild(textX); break;
-            case '5': positionsGame[5] = 'x'; r2c3.appendChild(textX); break;
-            case '6': positionsGame[6] = 'x'; r3c1.appendChild(textX); break;
-            case '7': positionsGame[7] = 'x'; r3c2.appendChild(textX); break;
-            case '8': positionsGame[8] = 'x'; r3c3.appendChild(textX); break;
-        }
-    }else{
-        switch(name_btn){
-            case '0': positionsGame[0] = 'o'; r1c1.appendChild(textO); break;
-            case '1': positionsGame[1] = 'o'; r1c2.appendChild(textO); break; 
-            case '2': positionsGame[2] = 'o'; r1c3.appendChild(textO); break;
-            case '3': positionsGame[3] = 'o'; r2c1.appendChild(textO); break;
-            case '4': positionsGame[4] = 'o'; r2c2.appendChild(textO); break;
-            case '5': positionsGame[5] = 'o'; r2c3.appendChild(textO); break;
-            case '6': positionsGame[6] = 'o'; r3c1.appendChild(textO); break;
-            case '7': positionsGame[7] = 'o'; r3c2.appendChild(textO); break;
-            case '8': positionsGame[8] = 'o'; r3c3.appendChild(textO); break;
-        }
-    }
-    /* console.log(positionsGame); */
+    var text = document.createTextNode(which);
+    switch(name_btn){
+        case '0': positionsGame[0] = which; r1c1.appendChild(text); break;
+        case '1': positionsGame[1] = which; r1c2.appendChild(text); break;
+        case '2': positionsGame[2] = which; r1c3.appendChild(text); break;
+        case '3': positionsGame[3] = which; r2c1.appendChild(text); break;
+        case '4': positionsGame[4] = which; r2c2.appendChild(text); break;
+        case '5': positionsGame[5] = which; r2c3.appendChild(text); break;
+        case '6': positionsGame[6] = which; r3c1.appendChild(text); break;
+        case '7': positionsGame[7] = which; r3c2.appendChild(text); break;
+        case '8': positionsGame[8] = which; r3c3.appendChild(text); break;
+    } console.log(positionsGame);
 }
  
 function jogadaIA(){
     /* var a = 0, b = 9;    
-    var randomNumber = Math.floor(Math.random() * (b - a + 1)) + a; */
-
-    setCampo_Jogado(randomNumber, 1); 
-    setValue_frontEnd(randomNumber, 1);
+    var randomPosi = Math.floor(Math.random() * (b - a + 1)) + a; */
+    var randomPosi;
+    for(;;){
+        if(verifyDis() == 0){
+            break;
+        }else{
+            randomPosi = Math.floor(Math.random() * (8 - 0 + 1)) + 0;
+            randomPosi = randomPosi.toString();
+            if(getBTN_disponivel(randomPosi) != true){ 
+                continue; 
+            }else{ 
+                //Delay Play IA
+                setTimeout(function(){
+                    setCampo_Jogado(randomPosi, 'o'); 
+                    verifyWinner('o')
+                    disableButtons(false);
+                }, 1500);//1.5 second
+                break;
+            }
+        }
+    }
 } 
 
 function verifyWinner(player){
@@ -118,16 +113,37 @@ function verifyWinner(player){
         if(positionsGame[winningCombinations[x][0]] == player && positionsGame[winningCombinations[x][1]] == player && positionsGame[winningCombinations[x][2]] == player)
         {
             if(player == 'x'){
-                disableButton.style.display = 'flex';
+                activeDivWin.style.display = 'flex';
                 songEffectWin.play();
-                break;
             }else{
+                activeDivWin.style.display = 'flex';
                 songEffectLose.play();
-                break;
             }
+            break;
         }
     }
 }
 
+function disableButtons(value){
+    if(value == true){
+        disableButton.style.display = 'block';
+        bgPlayerHuman.classList.remove("playingNow");
+        bgPlayerIA.classList.add("playingNow");
+    }else{
+        disableButton.style.display = 'none';
+        bgPlayerHuman.classList.add("playingNow");
+        bgPlayerIA.classList.remove("playingNow");
+    }
+}
+
+function verifyDis(){
+    var cont = 0;
+        for(var x = 0; x < positionsGame.length; x++){
+            if(positionsGame[x] == 0){
+                cont++;
+            }
+        }
+        return cont; 
+}
 
 

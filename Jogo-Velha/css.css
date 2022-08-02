@@ -20,6 +20,44 @@ html, body{
     justify-content: center;
     flex-direction: column;
 }
+#players{
+    margin-bottom: 10px;
+    width: 480px;
+    height: 100px;
+    background-color: var(--bg-destaque);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#players p{
+    width: auto;
+    height: auto;
+    font-size: 4em;
+
+    text-align: center;
+}
+#players #human{
+    width: 100px;
+    height: 80px;
+    border-radius: 25px;
+    
+    background: transparent url(https://images.emojiterra.com/google/android-10/512px/1f468-1f3fe-1f9b1.png) center center no-repeat;
+    background-size: 70%;
+    border: 1px solid var(--bg-barra-default);
+}
+#players #ia{
+    width: 100px;
+    height: 80px;
+    border-radius: 25px;
+
+    background: transparent url(https://cdn-icons-png.flaticon.com/512/1126/1126923.png?w=360) center center no-repeat;
+    background-size: 70%;
+    border: 1px solid var(--bg-barra-default);
+}
+#players div#ia.playingNow, #players div#human.playingNow{
+    background-color: green;
+}
 #jogo-velha{
     height: auto;
     width: 480px;
@@ -44,7 +82,7 @@ html, body{
     align-items: center;
     justify-content: center;
 
-    font-size: 5em;
+    font-size: 10em;
 }
 #jogo-velha div.barra-horizontal{
     width: 80%;
@@ -76,7 +114,7 @@ html, body{
     top: -205px;
     right: -65px;
 }
-#jogo-velha-fixed{
+#jogo-velha-win{
     height: 410px;
     width: 480px;
     
@@ -86,8 +124,9 @@ html, body{
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }
-#jogo-velha-fixed button{
+#jogo-velha-win button{
     background-color: aliceblue;
     border: transparent;
     border-radius: 50px;
@@ -96,4 +135,12 @@ html, body{
     height: 40px;
 
     cursor: pointer;
+}
+#jogo-velha-fixed{
+    height: 410px;
+    width: 480px;
+    
+    position: fixed;
+    display: none;
+    z-index: 1;
 }

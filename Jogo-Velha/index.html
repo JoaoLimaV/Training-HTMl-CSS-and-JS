@@ -9,6 +9,13 @@
 </head>
 <body>
     <div id="container">
+
+        <div id="players">
+            <div id="human" class="playingNow"></div>
+            <p> VS </p>
+            <div id="ia" class=""></div>
+        </div>
+
         <div id = 'jogo-velha'>
             <!-- C = COLUWN  R = ROW -->
             <div id="barra-vertical-1"></div>
@@ -31,9 +38,8 @@
 
             <div id="barra-vertical-2"></div>
 
-            <div id = 'jogo-velha-fixed'>
-                <button onclick="location.reload();"> Reiniciar </button>
-            </div>
+            <div id = 'jogo-velha-win'><button onclick="location.reload();"> Reiniciar </button></div>
+            <div id = 'jogo-velha-fixed'></div>
         </div>
     </div>
 </body>
