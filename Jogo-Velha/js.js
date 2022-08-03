@@ -45,12 +45,10 @@ function set_jogadaUser(posiJogada){
     if(getBTN_disponivel(posiJogada) != true){
         songEffectAcessDenied.play();
     }else{
-         disableButtons(true);
          // Parametro 1 = name button | Parametro 2 = which
-         setCampo_Jogado(posiJogada, 'x'); 
          songEffectPress.play();
-         verifyWinner('x');
-         jogadaIA();
+         setCampo_Jogado(posiJogada, 'x'); 
+         if(verifyWinner('x') == true){ } else { disableButtons(true); jogadaIA(); }
     }
 }
 
@@ -89,6 +87,7 @@ function jogadaIA(){
     var randomPosi;
     for(;;){
         if(verifyDis() == 0){
+            verifyDraw();
             break;
         }else{
             randomPosi = Math.floor(Math.random() * (8 - 0 + 1)) + 0;
@@ -99,9 +98,8 @@ function jogadaIA(){
                 //Delay Play IA
                 setTimeout(function(){
                     setCampo_Jogado(randomPosi, 'o'); 
-                    verifyWinner('o')
-                    disableButtons(false);
-                }, 1500);//1.5 second
+                    if(verifyWinner('o') == true){ } else { disableButtons(false);}
+                }, 2000);//1.5 second
                 break;
             }
         }
@@ -115,12 +113,30 @@ function verifyWinner(player){
             if(player == 'x'){
                 activeDivWin.style.display = 'flex';
                 songEffectWin.play();
+                return true;
             }else{
                 activeDivWin.style.display = 'flex';
                 songEffectLose.play();
+                return true;
             }
             break;
+        }else{
+            verifyDraw();
         }
+    }
+}
+
+function verifyDraw(){
+    var cont = 0;
+    for(var x = 0; x < positionsGame.length; x++){
+        if(positionsGame[x] == 'x' || positionsGame[x] == 'o'){
+            cont++;
+        }
+    }
+    if(cont == 9){
+        activeDivWin.style.display = 'flex';
+        console.log('cheguei')
+        /* songEffectLose.play(); */
     }
 }
 
