@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    font-family: 'Oxanium', cursive;
+}
+
+html, body{ 
+    height: 99%; 
+    width: 100%;
+    background-color: #FFFAFA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container{
+    min-height: 50%;
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border: 5px solid rgba(0,0,0,0.5);
+    padding: 0 30px;
+}
+#container form{
+    width: auto;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05em;
+}
+#container form input[type='text']{
+    width: 400px;
+    height: 40px;
+    border-radius: 25px;
+
+    border: 2px solid rgba(0,0,0,0.5);
+    font-size: 1.3em;
+    text-align: center;
+}
+#container #pokedex{
+    height: auto;
+    display: none;
+    transition: all 1s;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    display: none;
+}
+#pokedex #pokedex-container1{
+    width: 90%;
+    height: 250px;
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#pokedex img.image-pokemon{
+    width: 250px;
+    height: 200px;
+}
+#pokedex #information-poke-1{
+    width: 70%;
+    height: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#pokedex #information-poke-1 #name-pokemon{
+    border: 1px solid beige;
+    width: auto; 
+    height: 40%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 3em;
+    text-transform: uppercase;
+}
+#pokedex #information-poke-1 #type-pokemon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+#pokedex button#more-informations{
+    width: 50px;
+    height: 50px;
+    border-color: transparent;
+
+    background: transparent url(https://i.pinimg.com/originals/09/a6/ae/09a6ae937a6d9ef5cd10d132b59d6f5d.png) center center no-repeat;
+    background-size: 100%;
+
+    cursor: pointer;
+    position: relative;
+}
+#pokedex button#more-informations:hover{
+    transform: rotate(360deg);
+}
