@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Poke Api</title>
     <link rel="stylesheet" href="css.css">
 </head>
 <body>
     <div id="container">
+
         <form id = 'form'>
             <input id = 'input-name-pokemon' type = 'text' placeholder="Name or ID"> 
             <input id = 'radioButton' type = 'checkbox' value = 'shiny'> Shiny Version 
         </form>
+
+        <div id="loading-search"><span id = 'loading'></span></div>
 
         <div id="pokedex">
             <div id="pokedex-container1">
@@ -29,6 +32,7 @@
             
             <button id = 'more-informations'> </button> 
         </div>
+
     </div>
 </body>
 <script src="js.js"></script>
