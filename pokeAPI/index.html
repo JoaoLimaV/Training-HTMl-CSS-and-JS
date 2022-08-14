@@ -11,8 +11,9 @@
     <div id="container">
 
         <form id = 'form'>
-            <input id = 'input-name-pokemon' type = 'text' placeholder="Name or ID"> 
+            <input id = 'input-name-pokemon' type = 'text' placeholder="Name or ID" required> 
             <input id = 'radioButton' type = 'checkbox' value = 'shiny'> Shiny Version 
+            <input id = 'submitButton' type = 'submit' value=''>
         </form>
 
         <div id="loading-search"><span id = 'loading'></span></div>
@@ -26,13 +27,20 @@
                     <div id="type-pokemon"></div>
                 </div>
             </div>
-            <div id="pokedex-container2">
-
-            </div>
             
-            <button id = 'more-informations'> </button> 
-        </div>
+            <div id="pokedex-container2">
+                    <h4> Base Stats </h4>
+                    <p class = 'stats'>HP: </p>
+                    <p class = 'stats'>Attack: </p>
+                    <p class = 'stats'>Defense: </p>
+                    <p class = 'stats'>Special-attack: </p>
+                    <p class = 'stats'>Special-defense: </p>
+                    <p class = 'stats'>Speed: </p>
+                    <h4 id = 'id-poke'> Poke ID: </h4>
+            </div>
 
+            <button id = 'btn-more-info'> </button> 
+        </div>
     </div>
 </body>
 <script src="js.js"></script>

@@ -16,7 +16,7 @@ html, body{
 }
 
 #container{
-    min-height: 50%;
+    height: auto;
     width: auto;
 
     display: flex;
@@ -33,17 +33,28 @@ html, body{
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 1.05em;
 }
 #container form input[type='text']{
-    width: 400px;
+    width: 350px;
     height: 100%;
     border-radius: 25px;
 
     border: 2px solid rgba(0,0,0,0.5);
     font-size: 1.3em;
     text-align: center;
+}
+#container form input[type='submit']{
+    width: 40px;
+    height: 40px;
+    border: transparent;
+    background: transparent url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png) center center no-repeat;
+    background-size: 100%;
+}
+#container form input[type='submit']:hover{
+    width: 42px;
+    height: 42px;
 }
 #container #loading-search{
     width: 100%;
@@ -55,7 +66,10 @@ html, body{
 
     background-color: #FFFAFA;
 
+    transition: all 2s;
+
     position: fixed;
+    z-index: 1;
     display: none;
 }
 #container #loading-search span#loading{
@@ -71,7 +85,6 @@ html, body{
     height: auto;
     width: 500px;
 
-    display: none;
     transition: all 1s;
    
     display: flex;
@@ -124,6 +137,39 @@ html, body{
 
     font-size: 1.1em;
     text-transform: uppercase;
+}
+#pokedex #pokedex-container2{
+    width: 90%;
+    height: 250px;
+
+    margin-top: 20px;
+
+    display: none; 
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+
+    border: 2px solid rgba(0,0,0,0.5);
+}
+#pokedex-container2 p, #pokedex-container2 h6{
+    margin: 2px;
+}
+button#btn-more-info{
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+    border-color: transparent;
+
+    background: transparent url(https://cdn-icons-png.flaticon.com/512/188/188966.png) center center no-repeat;
+    background-size: 100%;
+
+    transition: 0.5s all;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+
+button#btn-more-info.rotate180deg{
+    transform: rotate(0deg);
 }
 @keyframes rotate {
     from{
