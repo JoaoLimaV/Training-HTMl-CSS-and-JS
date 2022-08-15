@@ -73,9 +73,9 @@ const renderPokemon = async (pokemon, shiny) => {
 
       if(data.id >= 650){
         if(shiny == true){
-          var {sprites: { ['front_default'] : imagePoke } } = data;
-        }else{
           var {sprites: { ['front_shiny'] : imagePoke } } = data;
+        }else{
+          var {sprites: { ['front_default'] : imagePoke } } = data;
         }
       }else{
         if(shiny == true){
