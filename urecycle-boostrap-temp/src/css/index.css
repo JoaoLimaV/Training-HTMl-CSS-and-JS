@@ -1,0 +1,19 @@
+
+#carousel-iner {
+    height: 25em;
+}
+
+#fale {
+    background: linear-gradient(to top, #157a4b, #41d18e);
+}
+
+.input-group input#btnPesquisa:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+@media (min-width: 768px) {
+    #carousel-iner {
+        height: 45em;
+    }
+}

@@ -1,0 +1,23 @@
+body{
+    z-index: 1;
+    background-color: transparent;
+}
+.text-justify{
+    text-align: justify;
+}
+.text-bold{
+    font-weight: bold;
+}
+#row_content{
+    background-color: #157a4b;
+}
+#div-image-footer{
+    height: 50%;
+}
+@media (max-width: 830px) {
+    #div-image-footer{
+        height: auto;
+    }
+}
+
+
